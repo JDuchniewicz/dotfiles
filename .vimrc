@@ -18,6 +18,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'airblade/vim-gitgutter'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'valloric/youcompleteme'
+Plug 'rdnetto/YCM-Generator'
 Plug 'w0rp/ale'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -37,6 +38,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """ YCM
 let g:ycm_server_python_interpreter='/usr/bin/python3'
 let g:ycm_global_ycm_extra_conf = '~/.vim/plugged./youcompleteme/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
 
 """ Solarized
 set t_Co=16 "removes fucked up issue with transparency"
@@ -48,7 +50,7 @@ colorscheme dracula
 """ Airline
 
 """ Nasm
-set ft=nasm
+let g:asmsyntax = 'nasm'
 
 """ Indentation
 inoremap " ""<left>
