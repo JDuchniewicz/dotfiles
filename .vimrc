@@ -17,11 +17,15 @@ Plug 'mbbill/undotree'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
+""" Session
 Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-prosession'
+""" Nerdtree
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdcommenter'
+""" FZF
+Plug 'junegunn/fzf.vim'
 """ UML
 Plug 'scrooloose/vim-slumlord'
 Plug 'aklt/plantuml-syntax'
@@ -49,6 +53,8 @@ Plug 'racer-rust/vim-racer'
 Plug 'lervag/vimtex' 
 Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
 "Plug 'supercollider/scvim'
+""" VHDL
+Plug 'http://git.vhdltool.com/vhdl-tool/syntastic-vhdl-tool'
 call plug#end()
 
 """""""""""
@@ -135,6 +141,15 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+""" Syntastic C
+let g:syntastic_c_check_header = 1
+let g:syntastic_c_auto_refresh_includes = 1
+
+""" Syntastic VHDL
+let g:syntastic_vhdl_checkers = ['vhdltool']
+""" TODO: could try autocompletion, but this requires having additional
+"language server - language client
+
 """ Rust
 let g:rustfmt_autosave = 1
 
@@ -156,3 +171,9 @@ augroup Racer
     autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
     autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
 augroup END
+
+""" FZF shortcuts
+nnoremap <silent> <leader>g :Rg<CR>
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>c :Commits<CR>
+nnoremap <silent> <leader>v :Buffers<CR>
