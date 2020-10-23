@@ -10,5 +10,5 @@ if not contains "$cargo_bin_path" $PATH
     set -gx PATH "$cargo_bin_path" $PATH
 end
 # Set up Rust-racer env variable
-set rustup_rust_src "/home/jduchniewicz/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+set rustup_rust_src "/home/jduchniewicz/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library"
 set -gx RUST_SRC_PATH "$rustup_rust_src"

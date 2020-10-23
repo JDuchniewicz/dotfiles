@@ -35,8 +35,10 @@ Plug 'dracula/vim'
 """ C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Shougo/deoplete.nvim'
-Plug 'tweekmonster/deoplete-clang2'
+Plug 'Shougo/deoplete-clangx'
+"Plug 'tweekmonster/deoplete-clang2' " 'This seems to be broken' ~Source Hunter
 Plug 'Shougo/neoinclude.vim'
+Plug 'xavierd/clang_complete'
 """ OpenGL
 Plug 'tikhomirov/vim-glsl'
 """ Python
@@ -55,6 +57,8 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
 "Plug 'supercollider/scvim'
 """ VHDL
 Plug 'http://git.vhdltool.com/vhdl-tool/syntastic-vhdl-tool'
+""" Blogging
+Plug 'https://github.com/gabrielelana/vim-markdown'
 call plug#end()
 
 """""""""""
@@ -71,6 +75,16 @@ nnoremap <silent> ]B :blast<CR>
 set undofile
 set undodir=~/.vim/undodir
 
+""" Visual mode
+vnoremap . :normal.<CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+""" Folding
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent
+set foldcolumn=2
 """""""""""
 """ Plugins
 """"""""""
@@ -86,7 +100,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 """ Deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#executable= '/usr/bin/clang'
+set completeopt+=noselect
+call deoplete#custom#option('omni_patterns', {
+\ 'c': ['[^. *\t]\%(\.\|->\)\w*'],
+\ 'cpp': ['[^. *\t]\%(\.\|->\)\w*', '[a-zA-Z_]\w*::'],
+\})
+"let g:deoplete#sources#clang#executable= '/usr/bin/clang'
 "let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 "let g:deoplete#sources#clang#clang_header = '/usr/include/libclang'
 " use tab to forward cycle
@@ -177,3 +196,5 @@ nnoremap <silent> <leader>g :Rg<CR>
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>c :Commits<CR>
 nnoremap <silent> <leader>v :Buffers<CR>
+
+let g:fzf_layout = { 'down' : '40%' } " Once highlighting works, can try out the window again
