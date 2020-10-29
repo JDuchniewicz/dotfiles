@@ -1,4 +1,4 @@
-"""" My config 
+"""" My config
 set number
 set pastetoggle=<F3>
 set softtabstop=0 expandtab shiftwidth=4 smarttab tabstop=4
@@ -33,7 +33,7 @@ Plug 'aklt/plantuml-syntax'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim'
 """ CoC (all completion sources have to be installed manually on the system)
-Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 """ C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 "Plug 'Shougo/deoplete.nvim'
@@ -53,7 +53,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'majutsushi/tagbar'
 "Plug 'racer-rust/vim-racer'
 """ Tex
-Plug 'lervag/vimtex' 
+Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
 "Plug 'supercollider/scvim'
 """ VHDL
@@ -87,6 +87,17 @@ set foldnestmax=10
 set foldmethod=indent
 set foldcolumn=2
 
+""" Shortcuts
+vmap <leader>y "+y
+vmap <leader>d "+d
+vmap <leader>p "+p
+vmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
+
+""" Whitespace (highlight + remove on save)
+match ErrorMsg '\s\+$'
+autocmd BufWritePre * :%s/\s\+$//e
 """""""""""
 """ Plugins
 """"""""""
@@ -121,7 +132,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 set t_Co=16 "removes fucked up issue with transparency"
 syntax enable
 set background=dark " dark | light "does work in reverse in st XD
-"colorscheme solarized 
+"colorscheme solarized
 colorscheme dracula
 
 
