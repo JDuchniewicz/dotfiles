@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged.')
 """ Basics
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'mbbill/undotree'
 Plug 'bling/vim-airline'
@@ -67,6 +68,8 @@ call plug#end()
 """"""""""
 
 """ Buffers
+" hidden, otherwise errors that buffer is not saved on switching them
+set hidden
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
@@ -187,7 +190,6 @@ autocmd VimEnter * nested :call tagbar#autoopen(1)
 nnoremap <silent> <leader>b :TagbarToggle<cr>
 
 """" Rust-Racer
-"set hidden
 "let g:racer_insert_paren = 1
 "let g:racer_experimental_completer = 1
 "augroup Racer
