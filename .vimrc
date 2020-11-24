@@ -35,6 +35,9 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'dracula/vim'
 """ CoC (all completion sources have to be installed manually on the system)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" coc-python
+" coc-rust-analyzer
+" coc-markdownlint
 """ C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 "Plug 'Shougo/deoplete.nvim'
@@ -45,9 +48,9 @@ Plug 'Shougo/neoinclude.vim'
 """ OpenGL
 Plug 'tikhomirov/vim-glsl'
 """ Python
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'roxma/nvim-yarp'
-Plug 'davidhalter/jedi-vim'
+"Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'roxma/nvim-yarp'
+"Plug 'davidhalter/jedi-vim'
 """ Rust
 Plug 'rust-lang/rust.vim'
 "Plug 'vim-syntastic/syntastic'
@@ -90,13 +93,13 @@ set foldnestmax=10
 set foldmethod=indent
 set foldcolumn=2
 
-""" Shortcuts
-vmap <leader>y "+y
-vmap <leader>d "+d
-vmap <leader>p "+p
-vmap <leader>P "+P
-vmap <leader>p "+p
-vmap <leader>P "+P
+""" Shortcuts (looks like conflicts some bindings) FIX THIS
+vmap <A-y> "+y
+vmap <A-d> "+d
+vmap <A-p> "+p
+vmap <A-P> "+P
+vmap <A-p> "+p
+vmap <A-P> "+P
 
 """ Whitespace (highlight + remove on save)
 match ErrorMsg '\s\+$'
