@@ -1,0 +1,21 @@
+# Increase volume
+#"pactl set-sink-volume 0 +1000"
+"amixer set Master 5%+"
+   XF86AudioRaiseVolume
+# Decrease volume
+#"pactl set-sink-volume 0 -1000"
+"amixer set Master 5%-"
+   XF86AudioLowerVolume
+# Mute Audio
+"amixer set Master toggle"
+   XF86AudioMute
+# Mute Mic
+"amixer set Capture toggle"
+   XF86AudioMicMute
+
+# Decrease backlight
+"xbacklight -dec 10"
+    XF86MonBrightnessDown
+# Increase backlight
+"xbacklight -inc 10"
+    XF86MonBrightnessUp

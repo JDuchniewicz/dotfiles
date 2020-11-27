@@ -51,6 +51,7 @@ Plug 'tikhomirov/vim-glsl'
 "Plug 'roxma/vim-hug-neovim-rpc'
 "Plug 'roxma/nvim-yarp'
 "Plug 'davidhalter/jedi-vim'
+"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 """ Rust
 Plug 'rust-lang/rust.vim'
 "Plug 'vim-syntastic/syntastic'
