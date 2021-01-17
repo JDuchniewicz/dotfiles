@@ -52,11 +52,13 @@ Plug 'tikhomirov/vim-glsl'
 "Plug 'roxma/nvim-yarp'
 "Plug 'davidhalter/jedi-vim'
 "Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'vim-python/python-syntax'
 """ Rust
 Plug 'rust-lang/rust.vim'
 "Plug 'vim-syntastic/syntastic'
 Plug 'majutsushi/tagbar'
 "Plug 'racer-rust/vim-racer'
+Plug 'cespare/vim-toml'
 """ Tex
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
@@ -78,6 +80,7 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+"" TODO: add eventignore for bufdo (loses syntax highlight)
 
 """ Persistent undo
 set undofile
@@ -184,6 +187,9 @@ nnoremap <leader>u :UndotreeToggle<cr>
 "let g:syntastic_vhdl_checkers = ['vhdltool']
 """" TODO: could try autocompletion, but this requires having additional
 ""language server - language client
+
+""" Python
+let g:python_highlight_all = 1
 
 """ Rust
 let g:rustfmt_autosave = 1
