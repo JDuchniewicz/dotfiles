@@ -67,29 +67,18 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
 "Plug 'http://git.vhdltool.com/vhdl-tool/syntastic-vhdl-tool'
 """ Blogging
 Plug 'https://github.com/gabrielelana/vim-markdown'
+Plug 'nicwest/vim-workman'
 call plug#end()
 
 """""""""""
 """ Vanilla
 """"""""""
-
-""" Buffers
-" hidden, otherwise errors that buffer is not saved on switching them
-set hidden
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-"" TODO: add eventignore for bufdo (loses syntax highlight)
-
+""""""""""
+""" Common
+""""""""""
 """ Persistent undo
 set undofile
 set undodir=~/.vim/undodir
-
-""" Visual mode
-vnoremap . :normal.<CR>
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 
 """ Folding
 set foldlevelstart=10
@@ -97,20 +86,66 @@ set foldnestmax=10
 set foldmethod=indent
 set foldcolumn=2
 
-""" Shortcuts (looks like conflicts some bindings) FIX THIS
-vmap <A-y> "+y
-vmap <A-d> "+d
-vmap <A-p> "+p
-vmap <A-P> "+P
-vmap <A-p> "+p
-vmap <A-P> "+P
-
 """ Whitespace (highlight + remove on save)
 match ErrorMsg '\s\+$'
 autocmd BufWritePre * :%s/\s\+$//e
+""""""""""
+""" QWERTY
+""""""""""
+""" Buffers
+" hidden, otherwise errors that buffer is not saved on switching them
+#set hidden
+#nnoremap <silent> [b :bprevious<CR>
+#nnoremap <silent> ]b :bnext<CR>
+#nnoremap <silent> [B :bfirst<CR>
+#nnoremap <silent> ]B :blast<CR>
+
+""" Visual mode
+"vnoremap . :normal.<CR>
+"vnoremap J :m '>+1<CR>gv=gv
+"vnoremap K :m '<-2<CR>gv=gv
+
+""" Shortcuts (looks like conflicts some bindings) FIX THIS
+"vmap <A-y> "+y
+"vmap <A-d> "+d
+"vmap <A-p> "+p
+"vmap <A-P> "+P
+"vmap <A-p> "+p
+"vmap <A-P> "+P
+
+""""""""""
+""" Workman
+""""""""""
+""" Buffers
+" hidden, otherwise errors that buffer is not saved on switching them
+set hidden
+nnoremap <silent> [v :bprevious<CR>
+nnoremap <silent> ]v :bnext<CR>
+nnoremap <silent> [V :bfirst<CR>
+nnoremap <silent> ]V :blast<CR>
+"" TODO: add eventignore for bufdo (loses syntax highlight)
+
+""" Visual mode (Workman)
+vnoremap . :normal.<CR>
+vnoremap N :m '>+1<CR>gv=gv
+vnoremap E :m '<-2<CR>gv=gv
+
+""" Shortcuts (looks like conflicts some bindings) FIX THIS
+vmap <A-j> "+y
+vmap <A-h> "+d
+vmap <A-p> "+p
+vmap <A-P> "+P
+
+
 """""""""""
 """ Plugins
 """"""""""
+
+""" Workman
+let g:workman_normal_workman = 0
+let g:workman_insert_workman = 0
+let g:workman_normal_qwerty = 1
+let g:workman_insert_qwerty = 0
 
 """ Nerdtree
 let NERDTreeMapActivateNode='<right>'
@@ -167,7 +202,9 @@ au BufRead,BufNewFile *.S set filetype=nasm
 set autochdir
 
 """ UndoTree
-nnoremap <leader>u :UndotreeToggle<cr>
+"nnoremap <leader>u :UndotreeToggle<cr>
+""" Workman
+nnoremap <leader>f :UndotreeToggle<cr>
 
 """" Syntastic disabled, because coc replaces it
 "set statusline+=%#warningmsg#
@@ -197,7 +234,9 @@ let g:rustfmt_autosave = 1
 """ Tagbar
 """ seems not to autoopen with syntastic windows
 autocmd VimEnter * nested :call tagbar#autoopen(1)
-nnoremap <silent> <leader>b :TagbarToggle<cr>
+"nnoremap <silent> <leader>b :TagbarToggle<cr>
+""" Workman
+nnoremap <silent> <leader>v :TagbarToggle<cr>
 
 """" Rust-Racer
 "let g:racer_insert_paren = 1
@@ -213,10 +252,15 @@ nnoremap <silent> <leader>b :TagbarToggle<cr>
 "augroup END
 
 """ FZF shortcuts
+"nnoremap <silent> <leader>g :Rg<CR>
+"nnoremap <silent> <leader>f :Files<CR>
+"nnoremap <silent> <leader>c :Commits<CR>
+"nnoremap <silent> <leader>v :Buffers<CR>
+""" FZF shortcuts (Workman)
 nnoremap <silent> <leader>g :Rg<CR>
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>c :Commits<CR>
-nnoremap <silent> <leader>v :Buffers<CR>
+nnoremap <silent> <leader>t :Files<CR>
+nnoremap <silent> <leader>m :Commits<CR>
+nnoremap <silent> <leader>c :Buffers<CR>
 
 let g:fzf_layout = { 'down' : '40%' } " Once highlighting works, can try out the window again
 
