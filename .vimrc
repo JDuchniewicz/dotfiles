@@ -94,11 +94,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 """"""""""
 """ Buffers
 " hidden, otherwise errors that buffer is not saved on switching them
-#set hidden
-#nnoremap <silent> [b :bprevious<CR>
-#nnoremap <silent> ]b :bnext<CR>
-#nnoremap <silent> [B :bfirst<CR>
-#nnoremap <silent> ]B :blast<CR>
+"set hidden
+"nnoremap <silent> [b :bprevious<CR>
+"nnoremap <silent> ]b :bnext<CR>
+"nnoremap <silent> [B :bfirst<CR>
+"nnoremap <silent> ]B :blast<CR>
 
 """ Visual mode
 "vnoremap . :normal.<CR>

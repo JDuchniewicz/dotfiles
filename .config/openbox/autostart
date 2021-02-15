@@ -23,5 +23,6 @@ wicd-client --tray &
 udiskie &
 dunst &
 redshift-gtk &
+setxkbmap -v workman_pl_de && xset r 66
 xautolock -time 30 -locker "~/.local/bin/lock2.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'Locking screen in 30 seconds'" & #locks screen after 30 mins
-sleep 1 && ~/.local/bin/autoconnect.sh 
+sleep 1 && ~/.local/bin/autoconnect.sh
