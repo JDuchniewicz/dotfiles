@@ -67,7 +67,7 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
 "Plug 'http://git.vhdltool.com/vhdl-tool/syntastic-vhdl-tool'
 """ Blogging
 Plug 'https://github.com/gabrielelana/vim-markdown'
-Plug 'nicwest/vim-workman'
+"Plug 'nicwest/vim-workman'
 call plug#end()
 
 """""""""""
@@ -142,10 +142,16 @@ vmap <A-P> "+P
 """"""""""
 
 """ Workman
-let g:workman_normal_workman = 0
-let g:workman_insert_workman = 0
-let g:workman_normal_qwerty = 1
-let g:workman_insert_qwerty = 0
+" Map to Alt-yneo instead of hjkl
+nnoremap y h
+nnoremap n j
+nnoremap e k
+nnoremap o l
+
+vnoremap y h
+vnoremap n j
+vnoremap e k
+vnoremap o l
 
 """ Nerdtree
 let NERDTreeMapActivateNode='<right>'
@@ -202,9 +208,7 @@ au BufRead,BufNewFile *.S set filetype=nasm
 set autochdir
 
 """ UndoTree
-"nnoremap <leader>u :UndotreeToggle<cr>
-""" Workman
-nnoremap <leader>f :UndotreeToggle<cr>
+nnoremap <leader>u :UndotreeToggle<cr>
 
 """" Syntastic disabled, because coc replaces it
 "set statusline+=%#warningmsg#
