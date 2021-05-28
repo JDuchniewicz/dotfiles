@@ -19,7 +19,7 @@
 polybar top &
 picom -b -c --backend glx --vsync &
 nitrogen --restore &
-wicd-client --tray &
+#wicd-client --tray & # using NetworkManager
 udiskie &
 dunst &
 redshift-gtk &

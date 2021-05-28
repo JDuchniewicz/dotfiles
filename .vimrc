@@ -45,6 +45,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 ""Plug 'tweekmonster/deoplete-clang2' " 'This seems to be broken' ~Source Hunter
 Plug 'Shougo/neoinclude.vim'
 "Plug 'xavierd/clang_complete'
+Plug 'ericcurtin/CurtineIncSw.vim'
 """ OpenGL
 Plug 'tikhomirov/vim-glsl'
 """ Python
@@ -68,6 +69,8 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
 """ Blogging
 Plug 'https://github.com/gabrielelana/vim-markdown'
 "Plug 'nicwest/vim-workman'
+""" Snippets
+Plug 'https://github.com/honza/vim-snippets'
 call plug#end()
 
 """""""""""
@@ -235,6 +238,10 @@ let g:python_highlight_all = 1
 """ Rust
 let g:rustfmt_autosave = 1
 
+""" C/C++
+" TODO: add superkeys in vim!
+"Imap  :call CurtineIncSw()<CR>
+
 """ Tagbar
 """ seems not to autoopen with syntastic windows
 autocmd VimEnter * nested :call tagbar#autoopen(1)
@@ -287,6 +294,12 @@ function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 
 " <CR> to complete completion, <C-g>u break undo chain here?
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -365,3 +378,18 @@ nnoremap <silent><nowait> <space>n  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>e  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" CocSnippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+let g:coc_snippet_next = '<tab>'
