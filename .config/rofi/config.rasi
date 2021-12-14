@@ -1,3 +1,17 @@
 configuration {
-    theme:          "themes/dracula";
+    modi:                           "ssh,window,drun,run";
+    terminal:                       "st -e tmux";
+    ssh-client:                     "ssh";
+    ssh-command:                    "{terminal} -e "{ssh-client} {host}"";
+    font:                           "FontAwesome 10";
+    display-run:                    " ";
+    display-drun:                   "  ";
+    display-window:                 "  ";
+    drun-display-format:            "{icon} {name}";
+    show-icons:                     true;
+	inputchange {
+		movetop: true;
+	}
 }
+
+@theme "themes/dracula"
